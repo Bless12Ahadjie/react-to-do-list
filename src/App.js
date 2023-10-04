@@ -30,7 +30,7 @@ const App = () => {
  
         <ul style={{listStyle:"none"}}>
           {
-          tod.map( item => 
+          tod.map( item => item === ''? '':
           <Card style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem'}}>
             <CardContent >
               {item}
