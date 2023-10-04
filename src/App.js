@@ -36,7 +36,8 @@ const App = () => {
               {item}
              
             </CardContent>
-            <Button size='small'
+            <Button onClick={()=>{console.log('hello') }}
+             size='small'
               variant="text" color="error"
               style={{textTransform: "capitalize",width: "64px"}}>
                 Delete
