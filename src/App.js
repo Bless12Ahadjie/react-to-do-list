@@ -3,12 +3,13 @@ import style from './App.css'
 import { Box, Button, Card, CardContent, TextField, Typography } from '@mui/material';
 
 const App = () => {
-  const [todo,setTodo] = useState('')
-  const [tod,setTod] = useState([])
+  const [todo,setTodo] = useState('');
+  const [tod,setTod] = useState([]);
 
 
   const renderTodo = () =>{
     setTod([...tod,todo ])
+    setTodo('')
     
   }
 
@@ -22,7 +23,7 @@ const App = () => {
      <Typography  variant='h3'>To-Do-List</Typography>
       <TextField onChange={(e)=>{
           setTodo(e.target.value)
-     }} size='small' style={{margin: "1rem"}} variant= "outlined" type='text' label="make list here" />
+     }} size='small' style={{margin: "1rem"}} variant= "outlined" type='text' label="write a task here"  />
       <Button onClick={renderTodo}
       variant="outlined"
        style={{color: "#000",border: "1px solid #000",textTransform: "capitalize",width: "219px",marginBottom: "1rem"}}>
@@ -32,14 +33,12 @@ const App = () => {
         <ul style={{listStyle:"none"}}>
           {
           tod.map( item => item === ''? '':
-          <Card style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem'}}>
+          <Card  style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem'}}>
             <CardContent >
               {item}
-             
             </CardContent>
             <Button onClick={()=>{
-              tod.filter()
-  
+              tod.filter(item => item === item&& console.log('do something'))
             }}
 
              size='small'
