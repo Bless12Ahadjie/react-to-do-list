@@ -9,6 +9,7 @@ const App = () => {
 
   const renderTodo = () =>{
     setTod([...tod,todo ])
+    
   }
 
 
@@ -36,7 +37,11 @@ const App = () => {
               {item}
              
             </CardContent>
-            <Button onClick={()=>{console.log('hello') }}
+            <Button onClick={()=>{
+              tod.filter()
+  
+            }}
+
              size='small'
               variant="text" color="error"
               style={{textTransform: "capitalize",width: "64px"}}>
