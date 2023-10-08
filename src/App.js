@@ -4,13 +4,18 @@ import { Box, Button, Card, CardContent, TextField, Typography } from '@mui/mate
 
 const App = () => {
   const [todo,setTodo] = useState('');
-  const [tod,setTod] = useState([]);
+  const [todoList,setTodoList] = useState([]);
 
 
-  const renderTodo = () =>{
-    setTod([...tod,todo ])
+  const activateTodo = () =>{
+    setTodoList([...todoList,todo ])
     setTodo('')
-    
+  }
+
+  const deleteTask = (taskName) => {
+     setTodoList(todoList.filter((task) =>task !== taskName
+      ))
+      
   }
 
 
@@ -24,7 +29,7 @@ const App = () => {
       <TextField onChange={(e)=>{
           setTodo(e.target.value)
      }} size='small' style={{margin: "1rem"}} variant= "outlined" type='text' label="write a task here"  />
-      <Button onClick={renderTodo}
+      <Button onClick={activateTodo}
       variant="outlined"
        style={{color: "#000",border: "1px solid #000",textTransform: "capitalize",width: "219px",marginBottom: "1rem"}}>
         Add
@@ -32,15 +37,12 @@ const App = () => {
  
         <ul style={{listStyle:"none"}}>
           {
-          tod.map( item => item === ''? '':
+          todoList.map( task => task === ''? '':
           <Card  style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem'}}>
             <CardContent >
-              {item}
+              {task}
             </CardContent>
-            <Button onClick={()=>{
-              tod.filter(item => item === item&& console.log('do something'))
-            }}
-
+            <Button  onClick={() => deleteTask(task)} 
              size='small'
               variant="text" color="error"
               style={{textTransform: "capitalize",width: "64px"}}>
