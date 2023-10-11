@@ -8,12 +8,17 @@ const App = () => {
 
 
   const activateTodo = () =>{
-    setTodoList([...todoList,todo ])
+    const task = {
+      id: todoList.length === 0? 1 :todoList[todoList.length - 1].id + 1,
+      tasksName: todo,
+    }
+    setTodoList([...todoList,task ])
     setTodo('')
   }
 
-  const deleteTask = (taskName) => {
-     setTodoList(todoList.filter((task) =>task !== taskName
+  const deleteTask = (id) => {
+  
+     setTodoList(todoList.filter((task) =>task.id !== id
       ))
       
   }
@@ -40,9 +45,9 @@ const App = () => {
           todoList.map( task => task === ''? '':
           <Card  style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem'}}>
             <CardContent >
-              {task}
+              {task.tasksName}
             </CardContent>
-            <Button  onClick={() => deleteTask(task)} 
+            <Button  onClick={() => deleteTask(task.id)} 
              size='small'
               variant="text" color="error"
               style={{textTransform: "capitalize",width: "64px"}}>
