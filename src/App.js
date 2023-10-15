@@ -56,7 +56,7 @@ const App = () => {
         <ul style={{listStyle:"none"}}>
           {
           todoList.map( task => task.tasksName === ''? '':
-          <Card  style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem',color: task.completed&& "green",textDecoration: task.completed&& "line-through"}}>
+          <Card  style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem',color: task.completed&& "#fff",backgroundColor: task.completed&& "#90ee90",textDecoration: task.completed&& "line-through"}}>
             <CardContent  >
               {task.tasksName}
             </CardContent>
