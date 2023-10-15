@@ -11,16 +11,29 @@ const App = () => {
     const task = {
       id: todoList.length === 0? 1 :todoList[todoList.length - 1].id + 1,
       tasksName: todo,
+      completed: false,
     }
     setTodoList([...todoList,task ])
     setTodo('')
   }
 
   const deleteTask = (id) => {
-  
      setTodoList(todoList.filter((task) =>task.id !== id
       ))
       
+  }
+
+  const updateToDO = (id) =>{
+   setTodoList( 
+    todoList.map((task)=>{
+      if (task.id === id){
+       return{...task, completed: true}
+      }
+      else{
+        return task
+      }
+       
+    }))
   }
 
 
@@ -42,9 +55,9 @@ const App = () => {
  
         <ul style={{listStyle:"none"}}>
           {
-          todoList.map( task => task === ''? '':
-          <Card  style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem'}}>
-            <CardContent >
+          todoList.map( task => task.tasksName === ''? '':
+          <Card  style={{marginBottom:"1rem",width: "219px",marginLeft:'-2.5rem',color: task.completed&& "green",textDecoration: task.completed&& "line-through"}}>
+            <CardContent  >
               {task.tasksName}
             </CardContent>
             <Button  onClick={() => deleteTask(task.id)} 
@@ -53,6 +66,11 @@ const App = () => {
               style={{textTransform: "capitalize",width: "64px"}}>
                 Delete
              </Button>
+
+             <Button  onClick={()=>updateToDO(task.id)}
+             variant="text" color="success"
+             style={{textTransform: "capitalize",width: "64px"}}
+             >done</Button>
            </Card>)
           
           }
